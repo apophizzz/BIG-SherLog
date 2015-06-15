@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Premain-Class: com.big.instrumentation.agent.MBeanInstallerAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+
