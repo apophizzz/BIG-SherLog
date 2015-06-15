@@ -8,7 +8,6 @@ import static org.hamcrest.Matchers.*;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import org.junit.Before;
 import org.junit.Test;
 import com.big.instrumentation.dummy.DummyClass;
@@ -117,9 +116,9 @@ public class InstrumentationServiceTest {
 	@Test(expected = InvocationTargetException.class)
 	public void testInstrumentThrowsExceptionOnMissingInstrumentationObject() throws Exception {
 		classUnderTest.setInstrumentation(null);
-		Method instrument = classUnderTest.getClass().getDeclaredMethod("instrument", Class.class, ClassLoader.class, String.class, String.class);
+		Method instrument = classUnderTest.getClass().getDeclaredMethod("instrument", Class.class, String.class, String.class);
 		instrument.setAccessible(true);
-		instrument.invoke(classUnderTest, dummyClass, dummyClass.getClassLoader(), dummyMethodName, JavassistUtils.getSignaturesForMethod(dummyClass.getName(), dummyMethodName).get(0));
+		instrument.invoke(classUnderTest, dummyClass, dummyMethodName, JavassistUtils.getSignaturesForMethod(dummyClass.getName(), dummyMethodName).get(0));
 	}
 
 	/**
@@ -131,9 +130,9 @@ public class InstrumentationServiceTest {
 	@Test
 	public void testInstrumentDelegatesToInstrumentationObject() throws Exception {
 		try {
-			Method instrument = classUnderTest.getClass().getDeclaredMethod("instrument", Class.class, ClassLoader.class, String.class, String.class);
+			Method instrument = classUnderTest.getClass().getDeclaredMethod("instrument", Class.class, String.class, String.class);
 			instrument.setAccessible(true);
-			instrument.invoke(classUnderTest, dummyClass, dummyClass.getClassLoader(), dummyMethodName, JavassistUtils.getSignaturesForMethod(dummyClass.getName(), dummyMethodName).get(0));
+			instrument.invoke(classUnderTest, dummyClass, dummyMethodName, JavassistUtils.getSignaturesForMethod(dummyClass.getName(), dummyMethodName).get(0));
 		} catch (InvocationTargetException e) {
 			fail("Unexpected InvocationTargetException: " + e.getStackTrace());
 		}

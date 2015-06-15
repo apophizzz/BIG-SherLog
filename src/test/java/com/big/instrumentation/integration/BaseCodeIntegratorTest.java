@@ -2,14 +2,20 @@ package com.big.instrumentation.integration;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
+import java.lang.instrument.Instrumentation;
 
-import com.big.instrumentation.dummy.DummyClass;
-import com.big.instrumentation.util.JavassistUtils;
-import javassist.*;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
 import org.junit.Before;
 import org.junit.Test;
+import com.big.instrumentation.dummy.DummyClass;
+import com.big.instrumentation.util.InstrumentationUtils;
+import com.big.instrumentation.util.JavassistUtils;
 
 /**
  * Created by patrick.kleindienst on 01.06.2015.
@@ -19,18 +25,24 @@ public class BaseCodeIntegratorTest {
 	private BaseCodeIntegrator	baseCodeIntegrator;
 	private ClassPool			classPool;
 	private Class				dummyClass;
+	private Instrumentation		mockInstrumentation;
 
 	@Before
 	public void setUp() throws Exception {
 		baseCodeIntegrator = new BaseCodeIntegrator() {
 			@Override
-			protected CtMethod enhanceMethodCode(CtClass ctClass, CtMethod ctMethod) {
+			protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
 				ctMethod.setName("newMethod");
 				return ctMethod;
 			}
 		};
 		classPool = new ClassPool(true);
 		dummyClass = DummyClass.class;
+
+		mockInstrumentation = mock(Instrumentation.class);
+		when(mockInstrumentation.getAllLoadedClasses()).thenReturn(new Class[] { DummyClass.class });
+
+		InstrumentationUtils.setInstrumentation(mockInstrumentation);
 	}
 
 	// ########################################################

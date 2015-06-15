@@ -3,8 +3,6 @@ package com.big.instrumentation.integration;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.big.instrumentation.annotation.Transformer;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.CtMethod;
@@ -13,14 +11,20 @@ import javassist.NotFoundException;
 import com.big.instrumentation.util.InstrumentationUtils;
 
 /**
+ * CAUTION: Implementation is currently paused because identifying method
+ * parameters by name requires compiling with '-parameter' flag when using
+ * javac.
+ * 
  * Created by patrick.kleindienst on 10.06.2015.
+ * 
+ * @author patrick.kleindienst
  */
 public class ParamMonitoringCodeIntegrator extends BaseCodeIntegrator {
 
 	@Override
-	protected CtMethod enhanceMethodCode(CtClass ctClass, CtMethod ctMethod) {
+	protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
 		try {
-			String paramStatement = buildParamLoggingStatement(ctClass.getName(), ctMethod);
+			String paramStatement = buildParamLoggingStatement(ctMethod.getDeclaringClass().getName(), ctMethod);
 			ctMethod.insertAfter(paramStatement + "System.out.println(\"It worked!\");");
 		} catch (CannotCompileException e) {
 			e.printStackTrace();

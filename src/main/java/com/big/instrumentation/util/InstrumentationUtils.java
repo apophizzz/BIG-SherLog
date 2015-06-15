@@ -6,11 +6,9 @@ import java.util.List;
 
 /**
  * This utility class encapsulates several convenience methods for operating on
- * the {@link Instrumentation} instance obtained from JVM.
+ * the {@link Instrumentation} instance obtained from JVM.<br/>
  *
- * <p>
  * Created by patrick.kleindienst on 10.06.2015.
- * </p>
  *
  * @author patrick.kleindienst
  * 

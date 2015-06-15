@@ -1,16 +1,13 @@
 package com.big.instrumentation.jmx;
 
 import com.big.instrumentation.transform.BaseTransformer;
-
 import java.util.List;
 
 /**
  * An interface defining {@link JmxInstrumentationService} as a MBean and making
- * it accessible through Java Management Extensions.
+ * it accessible through Java Management Extensions.<br/>
  * 
- * <p>
  * Created by patrick.kleindienst on 05.06.2015.
- * </p>
  * 
  * @author patrick.kleindienst
  * 
@@ -18,7 +15,7 @@ import java.util.List;
 public interface JmxInstrumentationServiceMBean {
 
 	// #####################################################
-	// # BASE PACKAGE #
+	// # CONCERN: BASE PACKAGE #
 	// #####################################################
 
 	/**
@@ -38,7 +35,7 @@ public interface JmxInstrumentationServiceMBean {
 	String getBasePackage();
 
 	// #####################################################
-	// # CLASS & METHOD INFO #
+	// # CONCERN: CLASS & METHOD INFO #
 	// #####################################################
 
 	/**
@@ -71,7 +68,7 @@ public interface JmxInstrumentationServiceMBean {
 	List<String> listSignaturesForMethod(String className, String methodName);
 
 	// #####################################################
-	// # INSTRUMENTATION #
+	// # CONCERN: INSTRUMENTATION #
 	// #####################################################
 
 	/**
@@ -110,7 +107,7 @@ public interface JmxInstrumentationServiceMBean {
 	void resetClassTransformation(String className);
 
 	// #####################################################
-	// # AVAILABLE TRANSFORMATIONS & SELECTION #
+	// # CONCERN: AVAILABLE TRANSFORMATIONS & SELECTION #
 	// #####################################################
 
 	/**

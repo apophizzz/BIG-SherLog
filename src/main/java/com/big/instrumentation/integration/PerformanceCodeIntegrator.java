@@ -5,9 +5,18 @@ import javassist.CtClass;
 import javassist.CtMethod;
 
 /**
+ * Provided implementation of {@link BaseCodeIntegrator}, inserting code for
+ * performance measuring of method executions.<br/>
+ *
  * Created by patrick.kleindienst on 03.06.2015.
+ *
+ * @author patrick.kleindienst
  */
 public class PerformanceCodeIntegrator extends BaseCodeIntegrator {
+
+	// #####################################################
+	// # STATIC MEMBERS #
+	// #####################################################
 
 	private static final String	SET_START		= "startTime = System.currentTimeMillis();";
 	private static final String	SET_STOP		= "stopTime = System.currentTimeMillis();";
@@ -15,8 +24,20 @@ public class PerformanceCodeIntegrator extends BaseCodeIntegrator {
 	private static final String	LOG_STOP		= PROVIDED_LOGGER + ".debug(\"Execution stopped at: \" + java.lang.String.valueOf(stopTime));";
 	private static final String	LOG_TIME_DIFF	= PROVIDED_LOGGER + ".debug(\"Execution took \" + java.lang.String.valueOf(stopTime - startTime) + \" ms\");";
 
+	// #####################################################
+	// # INSTANCE METHODS #
+	// #####################################################
+
+	/**
+	 * Adding some code to create performance measurement log statements
+	 * 
+	 * @param ctMethod
+	 *            method to be modified
+	 * @return the modified {@link CtMethod} which can be re-attached to it's
+	 *         declaring class after modification
+	 */
 	@Override
-	protected CtMethod enhanceMethodCode(CtClass ctClass, CtMethod ctMethod) {
+	protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
 		try {
 			ctMethod.addLocalVariable("startTime", CtClass.longType);
 			ctMethod.addLocalVariable("stopTime", CtClass.longType);

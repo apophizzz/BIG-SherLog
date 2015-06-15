@@ -19,18 +19,24 @@ import com.big.instrumentation.util.JavassistUtils;
  * {@link JmxInstrumentationServiceMBean} interface and defines the operations
  * that can be performed via <a
  * href="http://docs.oracle.com/javase/tutorial/jmx/">Java Management
- * Extensions</a>, using e.g. JConsole as a JMX tool.
+ * Extensions</a>, using e.g. JConsole as a JMX tool.<br/>
  *
- * <p>
  * Created by patrick.kleindienst on 05.06.2015.
- * </p>
  * 
  * @author patrick.kleindienst
  * 
  */
 public class JmxInstrumentationService implements JmxInstrumentationServiceMBean {
 
+	// #####################################################
+	// # STATIC MEMBERS #
+	// #####################################################
+
 	private static final String										IGNORED_PACKAGE	= "com.big.instrumentation";
+
+	// #####################################################
+	// # INSTANCE MEMBERS #
+	// #####################################################
 
 	private String													basePackage;
 	private InstrumentationService									instrumentationService;
@@ -43,7 +49,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	}
 
 	// #####################################################
-	// # BASE PACKAGE #
+	// # CONCERN: BASE PACKAGE #
 	// #####################################################
 
 	/**
@@ -63,7 +69,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	}
 
 	// #####################################################
-	// # CLASS & METHOD INFO #
+	// # CONCERN: CLASS & METHOD INFO #
 	// #####################################################
 
 	/**
@@ -105,7 +111,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	}
 
 	// #####################################################
-	// # INSTRUMENTATION #
+	// # CONCERN: INSTRUMENTATION #
 	// #####################################################
 
 	/**
@@ -137,7 +143,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	}
 
 	// #####################################################
-	// # AVAILABLE TRANSFORMATIONS & SELECTION #
+	// # CONCERN: AVAILABLE TRANSFORMATIONS & SELECTION #
 	// #####################################################
 
 	/**

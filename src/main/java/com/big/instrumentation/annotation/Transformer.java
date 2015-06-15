@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
  * auto-discovery.<br/>
  *
  * Created by patrick.kleindienst on 11.06.2015.
+ * 
+ * @author patrick.kleindienst
  */
 
 @Retention(RetentionPolicy.RUNTIME)

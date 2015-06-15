@@ -1,13 +1,15 @@
 package com.big.instrumentation.transform;
 
 import com.big.instrumentation.integration.BaseCodeIntegrator;
-
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
 /**
- * 
+ * This class provides a base implementation of the {@link ClassFileTransformer}
+ * interface. The {@link BaseTransformer#transform} method defines a callback,
+ * invoked by the {@link java.lang.instrument.Instrumentation} object if an
+ * implementation of {@link BaseTransformer} was registered.<br/>
  * 
  * 
  * Created by patrick.kleindienst on 02.06.2015.
