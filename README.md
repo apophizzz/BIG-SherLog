@@ -52,4 +52,4 @@ Having applied all the steps so far you now should be able to connect to _SherLo
 __Congratulations, from now on you can enjoy simple runtime debugging with _SherLog_!__
 
 
- __*Caution: As for now, it will be exlpained how to setup and use _SherLog_ in an __JBoss AS 7 environment. Further documentation for Tomcat etc. will follow soon.__
+ __*Caution: As for now, it will be exlpained how to setup and use _SherLog_ in a JBoss AS 7 environment. Further documentation for Tomcat etc. will follow soon.__
