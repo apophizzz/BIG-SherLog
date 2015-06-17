@@ -15,6 +15,8 @@ server, it's name infers from the probably most popular detective in the world.
 * Inside the root folder, start a Maven build calling _mvn package_
 * After a successful build the generated JAR can be found in the _target_ subfolder
 
+__Caution: Make sure that the SherLog JAR resides on the classpath when it's built and deployed. Only then our class which is responsible for logging can be found by the JBoss AS ModuleClassloader!__
+
 
 
 ## How to prepare JBoss AS for _SherLog_?* ##
@@ -42,8 +44,6 @@ Because _SherLog_ has to be ran as a Java agent, making JVM call a premain metho
 With our JBoss configuration prepared, we're almost done. What's left do is to start our JBoss Application with the _-javaagent_ parameter and pass it the location of the _SherLog_ JAR we built at the beginning.
 
 A possible setup might look like this: __-javaagent:C:\path\to\sherlog_jar\sherlog.jar__
-
-Make sure that your application starts properly.
 
 
 ## How to connect to _SherLog_? ##
