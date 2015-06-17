@@ -8,6 +8,8 @@ The __SherLog Debugging Tool__ has been developed in the context of my bachelor 
 Implemented to support developers and project leads in their daily work by faciliating quick debugging without stopping and restarting the application
 server, it's name infers from the probably most popular detective in the world.
 
+
+
 ## How to build _SherLog_? ##
 * Clone the repository to your machine
 * Inside the root folder, start a Maven build calling _mvn package_
@@ -18,7 +20,7 @@ server, it's name infers from the probably most popular detective in the world.
 ## How to prepare JBoss AS for _SherLog_?* ##
 In order to be able to use SherLog, your JBoss AS configuration has to be customized. Assuming you're running a Windows machine, open __standalone.conf.bat__ in your favorite test editor and append the following lines __right on top__ of the file:
 
-These lines prepare JBoss for being accessable via JMX:
+These lines prepare JBoss for being accessible via JMX:
 
 + _set "JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.port=1090"_
 + _set "JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.authenticate=false"_
