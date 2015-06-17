@@ -1,4 +1,4 @@
-# BIG-SherLog
+# SherLog Debugging Tool #
 ## What is _SherLog_? ##
 _SherLog_ is a tool enabling integration of logging statements into an Java Enterprise Application at runtime. It provides several out-of-the-box
 implementations for performance measurement or logging of instance variables. Moreover, _SherLog_ can be extended in an easy manner,
