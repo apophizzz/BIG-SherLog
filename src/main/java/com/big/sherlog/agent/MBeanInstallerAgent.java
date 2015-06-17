@@ -24,7 +24,7 @@ public class MBeanInstallerAgent {
 	public static void premain(String agentArgs, Instrumentation instrumentation) {
 		MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 		try {
-			ObjectName objectName = new ObjectName("com.big.instrument:type=InstrumentationService");
+			ObjectName objectName = new ObjectName("com.big.sherlog:type=SherlogService");
 			mBeanServer.registerMBean(new JmxInstrumentationService(instrumentation), objectName);
 			InstrumentationUtils.setInstrumentation(instrumentation);
 			JavassistUtils.setInstrumentation(instrumentation);
