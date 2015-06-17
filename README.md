@@ -4,7 +4,7 @@ _SherLog_ enables the integration of logging statements into an Java Enterprise 
 implementations for performance measurement or logging of instance variables. Moreover, _SherLog_ can be extended in an easy manner,
 offering interfaces for your own logging integration implementations. 
 
-The __SherLog Debugging Tool__ has been developed in the context of my bachelor thesis at [_Bertsch Innovation GmbH_](http://bertschinnovation.com/) (Stuttgart/Germany). 
+The _SherLog Debugging Tool_ has been developed in the context of my bachelor thesis at [_Bertsch Innovation GmbH_](http://bertschinnovation.com/) (Stuttgart/Germany). 
 Implemented to support developers and project leads in their daily work by faciliating quick debugging without stopping and restarting the application
 server, it's name infers from the probably most popular detective in the world.
 
