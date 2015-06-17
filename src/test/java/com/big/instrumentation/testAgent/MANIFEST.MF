@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Premain-Class: com.big.instrumentation.testAgent.TestAgent
-Can-Redefine-Classes: true
-Can-Retransform-Classes: true
-
