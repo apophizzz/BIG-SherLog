@@ -4,6 +4,10 @@ _SherLog_ is a tool enabling integration of logging statements into an Java Ente
 implementations for performance measurement or logging of instance variables. Moreover, _SherLog_ can be extended in an easy manner,
 offering interfaces for your own logging integration implementations. 
 
+The __SherLog Debugging Tool__ has been developed in the context of my bachelor thesis at [_Bertsch Innovation GmbH_](http://bertschinnovation.com/) (Stuttgart/Germany). 
+Implemented to support developers and project leads in their daily work by faciliating quick debugging without stopping and restarting the application
+server, it's name infers from the probably most popular detective in the world.
+
 ## How to build _SherLog_? ##
 * Clone the repository to your machine
 * Inside the root folder, start a Maven build calling _mvn package_
@@ -22,7 +26,7 @@ These lines prepare JBoss for being accessable via JMX:
 + _set "JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote"_
 + _set "JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.ssl=false"_
 
-Because _SherLog_ has to be ran as a agent, making JVM call a premain method right before regular server startup, we have to add additional JARs to JBoss classpath manually. Doing so, we can avoid JBoss complaining about missing logmanager setup on agent startup:
+Because _SherLog_ has to be ran as a Java agent, making JVM call a premain method right before regular server startup, we have to add additional JARs to JBoss classpath manually. Doing so, we can avoid JBoss complaining about missing logmanager setup on agent startup:
 
 + _set "JAVA_OPTS=%JAVA_OPTS% -Djava.util.logging.manager=org.jboss.logmanager.LogManager"_
 + _set "JAVA_OPTS=%JAVA_OPTS% -Xbootclasspath/p:%JBOSS_HOME%/modules/org/jboss/logmanager/main/jboss-logmanager-1.2.2.GA.jar"_
@@ -46,4 +50,4 @@ Having applied all the steps so far you now should be able to connect to _SherLo
 __Congratulations, from now on you can enjoy simple runtime debugging with _SherLog_!__
 
 
- __*Caution: As for now, it will be exlpained how to setup and use _SherLog_ in an __JBoss AS 7 environment__. Further documentation for Tomcat etc. will follow soon.__
+ __*Caution: As for now, it will be exlpained how to setup and use _SherLog_ in an __JBoss AS 7 environment. Further documentation for Tomcat etc. will follow soon.__
