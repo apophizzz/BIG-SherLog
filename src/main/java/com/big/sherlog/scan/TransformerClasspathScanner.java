@@ -65,11 +65,9 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * Check if a certain {@link File} ends with .class, i.e. is a class file
-	 * containing bytecode. If so, create a {@link FileInputStream} and dispatch
-	 * it to {@link TransformerClasspathScanner#handleClass(InputStream)}. If
-	 * <code>file</code> references a directory, the method is called
-	 * recursively.
+	 * Check if a certain {@link File} ends with .class, i.e. is a class file containing bytecode.
+	 * 
+	 * If <code>file</code> references a directory, the method is called recursively.
 	 * 
 	 * @param file
 	 *            {@link File} a certain classpath URL points to
@@ -95,13 +93,8 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * Step through the content of a JAR file referenced by <code>url</code>. If
-	 * an entry inside the JAR is actually a class file, dispatch the JARs
-	 * {@link JarInputStream} to
-	 * {@link TransformerClasspathScanner#handleClass(InputStream)}.
 	 * 
 	 * @param url
-	 *            {@link URL} pointing to a JAR
 	 */
 	private static void visitJAR(URL url) {
 		try {
@@ -118,12 +111,8 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * This method takes an {@link InputStream} as a parameter and applies the
-	 * {@link TransformerClassVisitor} to every class file that can be read by
-	 * this <code>inputStream</code>.
 	 * 
 	 * @param inputStream
-	 *            {@link InputStream} reading in class files
 	 * @throws IOException
 	 */
 	private static void handleClass(InputStream inputStream) throws IOException {
