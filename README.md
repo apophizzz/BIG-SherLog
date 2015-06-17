@@ -15,7 +15,7 @@ server, it's name infers from the probably most popular detective in the world.
 * Inside the root folder, start a Maven build calling _mvn package_
 * After a successful build the generated JAR can be found in the _target_ subfolder
 
-__Caution: Make sure that the SherLog JAR resides on the classpath when it's built and deployed. Only then our class which is responsible for logging can be found by the JBoss AS ModuleClassloader!__
+__Caution: Make sure that the SherLog JAR resides on the classpath of the app you want to debug when it's built and deployed. Only then our class which is responsible for logging can be found by the JBoss AS ModuleClassloader!__
 
 
 
