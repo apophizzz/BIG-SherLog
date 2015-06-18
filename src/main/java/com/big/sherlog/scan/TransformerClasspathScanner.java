@@ -44,8 +44,8 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * Step through available classloader hierarchy and collect their classpath
-	 * URLs.
+	 * Step through available classloader hierarchy and collect every
+	 * classloader's classpath URLs.
 	 * 
 	 * @return {@link List} containing every classloader's classpath URLs.
 	 */
@@ -65,9 +65,9 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * Check if a certain {@link File} ends with .class, i.e. is a class file containing bytecode.
-	 * 
-	 * If <code>file</code> references a directory, the method is called recursively.
+	 * Check if a certain {@link File} ends with .class, i.e. is a class file
+	 * containing bytecode. If <code>file</code> references a directory, the
+	 * method is called recursively.
 	 * 
 	 * @param file
 	 *            {@link File} a certain classpath URL points to
@@ -93,8 +93,13 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * 
+	 * Check every entry of a JAR a certain <code>url</code> points to and hand
+	 * over an {@link InputStream} to
+	 * {@link TransformerClasspathScanner#handleClass} whenever a class file is
+	 * found in that JAR.
+	 *
 	 * @param url
+	 *            {@link URL} referencing a JAR
 	 */
 	private static void visitJAR(URL url) {
 		try {
@@ -111,8 +116,12 @@ public class TransformerClasspathScanner {
 	}
 
 	/**
-	 * 
+	 * This method delegates an {@link InputStream} referencing a class file to
+	 * {@link ClassReader} which in turn invokes
+	 * {@link org.objectweb.asm.ClassVisitor}.
+	 *
 	 * @param inputStream
+	 *            {@link InputStream} for reading in a class file
 	 * @throws IOException
 	 */
 	private static void handleClass(InputStream inputStream) throws IOException {
