@@ -2,8 +2,8 @@
 
 ## What is _SherLog_? ##
 _SherLog_ enables the integration of logging statements into an Java Enterprise Application at runtime. It provides several out-of-the-box
-implementations for performance measurement or logging of instance variables. Moreover, _SherLog_ can be extended in an easy manner,
-offering interfaces for your own logging integration implementations. 
+implementations for performance measurement or logging of instance variables. This way _SherLog_ can help you find the reason for bugs, performance issues or other problems without stopping and re-starting your application server.  
+Moreover, _SherLog_ can be extended in an easy manner, offering interfaces for your own logging integration implementations. 
 
 
 ## How to build _SherLog_? ##
@@ -57,7 +57,39 @@ This MBean offers several operations that you can immediately try out in the con
 
 
 ## How to extend _SherLog_? ##
+Customizing SherLog to your own needs is very simple and unextensive. The first thing you have to do is to write a class extending
+SherLogs _BaseCodeIntegrator_ class:
 
+```java
+public class MyCustomCodeIntegrator extends BaseCodeIntegrator {
+     
+     	@Override
+	     protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
+	              // ... your code goes here	       
+		         return ctMethod;
+	     }
+}
+```
+
+The _enhanceMethodCode_ method leaves the choice of what kind of modification should be done upon to you. However, consider
+that Java Instrumentation API (which _SherLog_ is heavily based on) introduces some restrictions on what kind of changes 
+can be performed on classes already loaded by JVM. To insert your own logging statements use _BaseCodeIntergators_ static variable _PROVIDED_LOGGER_.
+This variable refers to a pre-configured Logger that puts it's output into a users home directory.
+
+The final step that has to be taken is to register your own custom _Transformer_ extending SherLogs _BaseTransformer_ base class:
+
+```java
+@Transformer
+public class MyCustomTransformer extends BaseTransformer {
+
+  	public MyCustomTransformer() {
+		   super(new MyCustomCodeIntegrator());
+	  }
+}
+```
+As you may see, all that remains to do is to subclass _BaseTransformer_ and pass it an instance of your _BaseCodeIntegrator_ subclass.
+Mind the _@Transformer_ annotation on top of _MyCustomTransformer_. This enables _SherLog_ to recognize your class a selectable
+transformer on server startup and it will show up in the transformer list of our MBean in jconsole.
 
 
 ## About _SherLog_:
