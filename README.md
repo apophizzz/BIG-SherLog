@@ -19,7 +19,7 @@ __Caution: Make sure that the SherLog JAR resides on the classpath of the app yo
 
 
 ## How to prepare JBoss AS for _SherLog_?* ##
-In order to be able to use SherLog, your JBoss AS configuration has to be customized. Assuming you're running a Windows machine, open __standalone.conf.bat__ in your favorite test editor and append the following lines __right on top__ of the file:
+In order to be able to use SherLog, your JBoss AS configuration has to be customized. Assuming you're running a Windows machine, open __standalone.conf.bat__  (under Linux environments it's __standalone.conf__) in your favorite test editor and append the following lines __right on top__ of the file:
 
 These lines prepare JBoss for being accessible via JMX:
 ```
