@@ -16,7 +16,10 @@ import org.objectweb.asm.*;
  * 
  * @author patrick.kleindienst
  */
-public class TransformerClassVisitor implements ClassVisitor {
+public class TransformerClassVisitor extends ClassVisitor
+{
+
+
 
 	// #####################################################
 	// # STATIC MEMBERS #
@@ -29,6 +32,16 @@ public class TransformerClassVisitor implements ClassVisitor {
 	// #####################################################
 
 	private String				className;
+
+	public TransformerClassVisitor(int i)
+	{
+		super(i);
+	}
+
+	public TransformerClassVisitor(int i, ClassVisitor classVisitor)
+	{
+		super(i, classVisitor);
+	}
 
 	// #####################################################
 	// # INSTANCE METHODS #

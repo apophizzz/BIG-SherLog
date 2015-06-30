@@ -10,6 +10,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.Opcodes;
 
 /**
  * The purpose of this class is to scan the whole classpath for .class-files and
@@ -110,7 +111,7 @@ public class TransformerClasspathScanner {
 					handleClass(jarInputStream);
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -125,7 +126,7 @@ public class TransformerClasspathScanner {
 	 * @throws IOException
 	 */
 	private static void handleClass(InputStream inputStream) throws IOException {
-		TransformerClassVisitor classVisitor = new TransformerClassVisitor();
+		TransformerClassVisitor classVisitor = new TransformerClassVisitor(Opcodes.ASM5);
 		new ClassReader(inputStream).accept(classVisitor, 0);
 	}
 }
