@@ -43,7 +43,7 @@ set "JAVA_OPTS=%JAVA_OPTS% -Xbootclasspath/p:%JBOSS_HOME%/modules/org/jboss/logm
 set "JAVA_OPTS=%JAVA_OPTS% -Djboss.modules.system.pkgs=org.jboss.logmanager"
 ```
 
-Since _SherLog_ uses _Apache log4j_ for producing it's output and ships with it's own log4j.properties file, we have to override WildFly's standard _log4j_ configuration. Insert the following line in __standalone.xml__ file:
+Since _SherLog_ uses _Apache log4j_ for producing it's output and ships with it's own log4j.properties file, we have to override WildFly's standard _log4j_ configuration. Insert the following line in __standalone.xml__ file to the logging subsystem:
 
 ```
 <subsystem xmlns="urn:jboss:domain:logging:2.0">
