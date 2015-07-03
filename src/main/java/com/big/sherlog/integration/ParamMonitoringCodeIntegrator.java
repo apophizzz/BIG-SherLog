@@ -1,6 +1,7 @@
 package com.big.sherlog.integration;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 import javassist.CannotCompileException;
@@ -38,8 +39,10 @@ public class ParamMonitoringCodeIntegrator extends BaseCodeIntegrator {
 		try {
 			Class<?> aClass = InstrumentationUtils.getLoadedClassByName(className);
 			Method method = aClass.getDeclaredMethod(ctMethod.getName(), ctMethodParamsToClassArray(ctMethod));
-			for (Class<?> param : method.getParameterTypes()) {
-				stringBuilder.append(PROVIDED_LOGGER + ".info(\"Parameter " + param.getName() + " has value: \"" + param.getName() + ");");
+			for (Parameter param : method.getParameters()) {
+				if (param.isNamePresent()) {
+					stringBuilder.append(PROVIDED_LOGGER + ".info(\"Parameter " + param.getName() + " has value:  \" + " + param.getName() + ");");
+				}
 			}
 
 		} catch (NoSuchMethodException e) {
