@@ -1,6 +1,6 @@
 package com.big.sherlog.transform;
 
-import com.big.sherlog.annotation.Transformer;
+import com.big.sherlog.annotation.SherlogTransformer;
 import com.big.sherlog.integration.ClassMemberMonitoringCodeIntegrator;
 
 /**
@@ -13,7 +13,7 @@ import com.big.sherlog.integration.ClassMemberMonitoringCodeIntegrator;
  * @author patrick.kleindienst
  */
 
-@Transformer
+@SherlogTransformer
 public class ClassMemberMonitoringTransformer extends BaseTransformer {
 
 	public ClassMemberMonitoringTransformer() {

@@ -1,11 +1,12 @@
 package com.big.sherlog.scan;
 
+import com.big.sherlog.annotation.SherlogTransformer;
 import org.objectweb.asm.*;
 
 /**
  * This implementation of {@link ClassVisitor} checks if a currently visited
  * class is annotated with
- * {@link com.big.sherlog.annotation.Transformer}. The main advantage of
+ * {@link SherlogTransformer}. The main advantage of
  * using the <a href="http://asm.ow2.org/">ASM library</a> is that a class does
  * not have to be loaded for our annotation analysis. The idea to use
  * {@link ClassVisitor} is inspired by Arno Haase's JAXenter article <a href=
@@ -25,7 +26,7 @@ public class TransformerClassVisitor extends ClassVisitor
 	// # STATIC MEMBERS #
 	// #####################################################
 
-	private static final String	TRANSFORMER_ANNOTATION	= "Lcom/big/sherlog/annotation/Transformer;";
+	private static final String	TRANSFORMER_ANNOTATION	= "Lcom/big/sherlog/annotation/SherlogTransformer;";
 
 	// #####################################################
 	// # INSTANCE MEMBERS #
@@ -81,7 +82,7 @@ public class TransformerClassVisitor extends ClassVisitor
 	 * {@inheritDoc}
 	 * <p>
 	 * Checks if the currently visited class has annotation
-	 * {@link com.big.sherlog.annotation.Transformer}.
+	 * {@link SherlogTransformer}.
 	 * </p>
 	 */
 	@Override

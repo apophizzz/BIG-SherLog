@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.big.sherlog.annotation.SherlogTransformer;
 import com.big.sherlog.scan.TransformerClasspathScanner;
 import com.big.sherlog.service.InstrumentationService;
 import com.big.sherlog.transform.BaseTransformer;
@@ -216,7 +217,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	 * Convenience method for collecting all currently loaded
 	 * {@link BaseTransformer} implementations. A classpath scan is executed at
 	 * the beginning to make sure that every {@link BaseTransformer} subclass
-	 * annotated with {@link com.big.sherlog.annotation.Transformer} is
+	 * annotated with {@link SherlogTransformer} is
 	 * actually loaded.
 	 *
 	 */

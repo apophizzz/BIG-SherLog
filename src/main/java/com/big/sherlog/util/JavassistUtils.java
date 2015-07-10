@@ -1,5 +1,6 @@
 package com.big.sherlog.util;
 
+import com.big.sherlog.agent.SherlogSetupAgent;
 import javassist.*;
 
 import java.io.IOException;
@@ -21,8 +22,8 @@ public class JavassistUtils {
 	// # STATIC MEMBERS #
 	// #####################################################
 
-	private static ClassPool		classPool	= new ClassPool(true);
-	private static Instrumentation	instr		= null;
+	private static ClassPool       classPool = new ClassPool(true);
+	private static Instrumentation instr     = SherlogSetupAgent.getInstrumentation();
 
 	// #####################################################
 	// # STATIC METHODS #
@@ -31,7 +32,7 @@ public class JavassistUtils {
 	/**
 	 * Get all existing signatures for a certain <code>methodName</code>
 	 * residing in a certain class.
-	 * 
+	 *
 	 * @param fullQualifiedClassName
 	 *            name of the class containing the method
 	 *            <code>methodName</code>

@@ -1,5 +1,7 @@
 package com.big.sherlog.util;
 
+import com.big.sherlog.agent.SherlogSetupAgent;
+
 import java.lang.instrument.Instrumentation;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +17,16 @@ import java.util.List;
  */
 public class InstrumentationUtils {
 
-	private static Instrumentation	instrumentation;
+	private static Instrumentation instrumentation = SherlogSetupAgent.getInstrumentation();
 
 	/**
 	 * Pass the {@link Instrumentation} object to the utility class.
-	 * 
+	 *
 	 * @param instr
 	 *            {@link Instrumentation} object to work on
 	 */
-	public static void setInstrumentation(Instrumentation instr) {
+	public static void setInstrumentation(Instrumentation instr)
+	{
 		instrumentation = instr;
 	}
 
@@ -31,7 +34,7 @@ public class InstrumentationUtils {
 	 * Iterate through all the classes known to the {@link Instrumentation}
 	 * object and search for a appropriate {@link Class} object by fully
 	 * qualified name of a class.
-	 * 
+	 *
 	 * @param className
 	 *            fully qualified name of a certain class
 	 * @return The {@link Class} object if a class named <code>className</code>

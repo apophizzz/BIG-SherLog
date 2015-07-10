@@ -1,6 +1,6 @@
 package com.big.sherlog.transform;
 
-import com.big.sherlog.annotation.Transformer;
+import com.big.sherlog.annotation.SherlogTransformer;
 import com.big.sherlog.integration.PerformanceCodeIntegrator;
 
 /**
@@ -12,7 +12,7 @@ import com.big.sherlog.integration.PerformanceCodeIntegrator;
  * @author patrick.kleindienst
  */
 
-@Transformer
+@SherlogTransformer
 public class PerformanceTransformer extends BaseTransformer {
 
 	public PerformanceTransformer() {

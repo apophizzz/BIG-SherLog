@@ -100,7 +100,7 @@ public class InstrumentationService {
 			transformer.setMethodName(methodName);
 			transformer.setMethodSignature(methodSignature);
 		} else {
-			throw new RuntimeInstrumentationException("Transformer value must not be null!");
+			throw new RuntimeInstrumentationException("SherlogTransformer value must not be null!");
 		}
 	}
 

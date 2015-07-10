@@ -19,15 +19,21 @@ import java.lang.management.ManagementFactory;
  * @author patrick.kleindienst
  * 
  */
-public class MBeanInstallerAgent {
+public class SherlogSetupAgent
+{
+
+	private static Instrumentation	instrumentationImpl	= null;
 
 	public static void premain(String agentArgs, Instrumentation instrumentation) {
 		MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 		try {
 			ObjectName objectName = new ObjectName("com.big.sherlog:type=SherlogService");
 			mBeanServer.registerMBean(new JmxInstrumentationService(instrumentation), objectName);
-			InstrumentationUtils.setInstrumentation(instrumentation);
-			JavassistUtils.setInstrumentation(instrumentation);
+
+			instrumentationImpl = instrumentation;
+
+			// System.out.println("Agent: " +
+			// SherlogSetupAgent.class.getClassLoader());
 
 		} catch (MalformedObjectNameException e) {
 			e.printStackTrace();
@@ -38,5 +44,9 @@ public class MBeanInstallerAgent {
 		} catch (MBeanRegistrationException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static Instrumentation getInstrumentation() {
+		return instrumentationImpl;
 	}
 }

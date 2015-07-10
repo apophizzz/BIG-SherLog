@@ -47,7 +47,7 @@
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Premain-Class>com.big.sherlog.agent.MBeanInstallerAgent</Premain-Class>
+                            <Premain-Class>com.big.sherlog.agent.SherlogSetupAgent</Premain-Class>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
                     </archive>
