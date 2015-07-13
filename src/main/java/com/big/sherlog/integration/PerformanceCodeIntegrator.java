@@ -46,10 +46,6 @@ public class PerformanceCodeIntegrator extends BaseCodeIntegrator {
 			ctMethod.insertAfter(SET_STOP);
 			ctMethod.insertAfter(LOG_STOP);
 			ctMethod.insertAfter(LOG_TIME_DIFF);
-			// ctMethod.insertAfter("System.out.println(\"Test1234\");");
-			// ctMethod.insertAfter("System.out.println(Math.random() * 10);");
-			// System.out.println("Logger: " +
-			// LoggerProvider.class.getClassLoader());
 		} catch (CannotCompileException e) {
 			e.printStackTrace();
 		}

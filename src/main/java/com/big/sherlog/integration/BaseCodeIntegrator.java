@@ -1,6 +1,8 @@
 package com.big.sherlog.integration;
 
 import java.io.IOException;
+
+import com.big.sherlog.logger.LoggerProvider;
 import javassist.*;
 
 /**
@@ -24,7 +26,7 @@ public abstract class BaseCodeIntegrator {
 	 * path to static {@link org.apache.log4j.Logger} member of
 	 * {@link com.big.sherlog.logger.LoggerProvider} class.
 	 */
-	protected static final String	PROVIDED_LOGGER	= "com.big.sherlog.logger.LoggerProvider.LOGGER";
+	protected static final String	PROVIDED_LOGGER	= LoggerProvider.class.getName() + ".LOGGER";
 
 	// #####################################################
 	// # INSTANCE METHODS #
