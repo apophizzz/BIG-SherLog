@@ -19,8 +19,7 @@ import java.lang.management.ManagementFactory;
  * @author patrick.kleindienst
  * 
  */
-public class SherlogSetupAgent
-{
+public class SherlogSetupAgent {
 
 	private static Instrumentation	instrumentationImpl	= null;
 
@@ -29,11 +28,7 @@ public class SherlogSetupAgent
 		try {
 			ObjectName objectName = new ObjectName("com.big.sherlog:type=SherlogService");
 			mBeanServer.registerMBean(new JmxInstrumentationService(instrumentation), objectName);
-
 			instrumentationImpl = instrumentation;
-
-			// System.out.println("Agent: " +
-			// SherlogSetupAgent.class.getClassLoader());
 
 		} catch (MalformedObjectNameException e) {
 			e.printStackTrace();
