@@ -5,6 +5,8 @@ import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.CtMethod;
 
+import java.time.LocalDateTime;
+
 /**
  * Provided implementation of {@link BaseCodeIntegrator}, inserting code for
  * performance measuring of method executions.<br/>
@@ -21,8 +23,8 @@ public class PerformanceCodeIntegrator extends BaseCodeIntegrator {
 
 	private static final String	SET_START		= "startTime = System.currentTimeMillis();";
 	private static final String	SET_STOP		= "stopTime = System.currentTimeMillis();";
-	private static final String	LOG_START		= PROVIDED_LOGGER + ".debug(\"Execution started at: \" + java.lang.String.valueOf(startTime));";
-	private static final String	LOG_STOP		= PROVIDED_LOGGER + ".debug(\"Execution stopped at: \" + java.lang.String.valueOf(stopTime));";
+	private static final String	LOG_START		= PROVIDED_LOGGER + ".debug(\"Execution started at: \" + java.time.LocalDateTime.now());";
+	private static final String	LOG_STOP		= PROVIDED_LOGGER + ".debug(\"Execution stopped at: \" + java.time.LocalDateTime.now());";
 	private static final String	LOG_TIME_DIFF	= PROVIDED_LOGGER + ".debug(\"Execution took \" + java.lang.String.valueOf(stopTime - startTime) + \" ms\");";
 
 	// #####################################################
