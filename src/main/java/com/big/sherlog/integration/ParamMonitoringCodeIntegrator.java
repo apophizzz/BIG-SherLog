@@ -25,6 +25,7 @@ public class ParamMonitoringCodeIntegrator extends BaseCodeIntegrator {
 	@Override
 	protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
 		try {
+			System.out.println("This is the param monitoring!");
 			String paramStatement = buildParamLoggingStatement(ctMethod.getDeclaringClass().getName(), ctMethod);
 			ctMethod.insertAfter(paramStatement + "System.out.println(\"It worked!\");");
 		} catch (CannotCompileException e) {
