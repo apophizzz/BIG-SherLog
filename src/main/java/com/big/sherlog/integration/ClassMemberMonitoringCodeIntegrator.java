@@ -32,7 +32,7 @@ public class ClassMemberMonitoringCodeIntegrator extends BaseCodeIntegrator {
 	@Override
 	protected CtMethod enhanceMethodCode(CtMethod ctMethod) {
 		try {
-			ctMethod.insertAfter(buildLoggingStatement(ctMethod.getDeclaringClass()));
+			ctMethod.insertBefore(buildLoggingStatement(ctMethod.getDeclaringClass()));
 		} catch (CannotCompileException e) {
 			e.printStackTrace();
 		}
