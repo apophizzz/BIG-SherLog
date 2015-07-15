@@ -73,7 +73,7 @@ public abstract class BaseCodeIntegrator {
 			CtClass ctClass = classPool.get(className);
 
 			for (CtMethod ctMethod : ctClass.getDeclaredMethods()) {
-				if (ctMethod.getName().equals(methodName)) {
+				if (ctMethod.getName().equalsIgnoreCase(methodName)) {
 					if (methodSignature != null && ctMethod.getSignature().equals(methodSignature)) {
 						ctClass.removeMethod(ctMethod);
 						ctClass.addMethod(enhanceMethodCode(ctMethod));
