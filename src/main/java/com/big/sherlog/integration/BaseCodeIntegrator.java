@@ -72,16 +72,8 @@ public abstract class BaseCodeIntegrator {
 		try {
 			CtClass ctClass = classPool.get(className);
 
-			for (CtMethod ctMethod : ctClass.getDeclaredMethods()) {
-				if (ctMethod.getName().equalsIgnoreCase(methodName)) {
-					if (methodSignature != null && ctMethod.getSignature().equals(methodSignature)) {
-						ctClass.removeMethod(ctMethod);
-						ctClass.addMethod(enhanceMethodCode(ctMethod));
-					} else if (methodSignature == null) {
-						ctClass.removeMethod(ctMethod);
-						ctClass.addMethod(enhanceMethodCode(ctMethod));
-					}
-				}
+			if (!searchAndReplaceMethod(ctClass, methodName, methodSignature)) {
+				LoggerProvider.LOGGER.error("Could not find method for name: " + methodName);
 			}
 			return ctClass.toBytecode();
 		} catch (NotFoundException e) {
@@ -92,6 +84,39 @@ public abstract class BaseCodeIntegrator {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	/**
+	 *
+	 * Convenience method that performs the task of stepping through a certain
+	 * class and triggers the instrumentation of the desired method.
+	 *
+	 * @param ctClass
+	 *            The class containing a certain method
+	 * @param methodName
+	 *            The name of the method that should be instrumented
+	 * @param methodSignature
+	 *            The optional signature of the method
+	 * @return true if the specified methods exists, false if not
+	 * @throws NotFoundException
+	 *             when the method could not be removed
+	 * @throws CannotCompileException
+	 *             when re-attaching the instrumented method fails
+	 */
+	private boolean searchAndReplaceMethod(CtClass ctClass, String methodName, String methodSignature) throws NotFoundException, CannotCompileException {
+		boolean atLeastOneMethodFound = false;
+		for (CtMethod ctMethod : ctClass.getDeclaredMethods()) {
+			if (ctMethod.getName().equalsIgnoreCase(methodName)) {
+				if (methodSignature != null && ctMethod.getSignature().equals(methodSignature)) {
+					ctClass.removeMethod(ctMethod);
+					ctClass.addMethod(enhanceMethodCode(ctMethod));
+				} else if (methodSignature == null) {
+					ctClass.removeMethod(ctMethod);
+					ctClass.addMethod(enhanceMethodCode(ctMethod));
+				}
+			}
+		}
+		return atLeastOneMethodFound;
 	}
 
 }
