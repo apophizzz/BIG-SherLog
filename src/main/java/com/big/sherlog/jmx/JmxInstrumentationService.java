@@ -77,7 +77,7 @@ public class JmxInstrumentationService implements JmxInstrumentationServiceMBean
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<String> listClassNamesByBasePackage() {
+	public List<String> listLoadedClassesByBasePackage() {
 		return InstrumentationUtils.getLoadedClassNamesListByBasePackage(basePackage, IGNORED_PACKAGE);
 	}
 
