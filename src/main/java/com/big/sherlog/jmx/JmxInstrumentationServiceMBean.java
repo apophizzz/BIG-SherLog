@@ -44,7 +44,7 @@ public interface JmxInstrumentationServiceMBean {
 	 *
 	 * @return loaded classes residing in specified base package
 	 */
-	List<String> listClassNamesByBasePackage();
+	List<String> listLoadedClassesByBasePackage();
 
 	/**
 	 * Creates a list of all the methods residing in a specific class.
