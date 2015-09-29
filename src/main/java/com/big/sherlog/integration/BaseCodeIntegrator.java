@@ -7,8 +7,8 @@ import javassist.*;
 
 /**
  * This class provides the core implementation of how a certain method is
- * identified, removed, transformed and re-attached using <a
- * href="http://jboss-javassist.github.io/javassist/">Javassist</a>. The
+ * identified, removed, transformed and re-attached using
+ * <a href="http://jboss-javassist.github.io/javassist/">Javassist</a>. The
  * decision about what kind of transformation is actually performed is left to
  * concrete implementations.<br/>
  * 
@@ -26,7 +26,7 @@ public abstract class BaseCodeIntegrator {
 	 * path to static {@link org.apache.log4j.Logger} member of
 	 * {@link com.big.sherlog.logger.LoggerProvider} class.
 	 */
-	protected static final String	PROVIDED_LOGGER	= LoggerProvider.class.getName() + ".LOGGER";
+	protected static final String PROVIDED_LOGGER = LoggerProvider.class.getName() + ".LOGGER";
 
 	// #####################################################
 	// # INSTANCE METHODS #
@@ -73,7 +73,11 @@ public abstract class BaseCodeIntegrator {
 			CtClass ctClass = classPool.get(className);
 
 			if (!searchAndReplaceMethod(ctClass, methodName, methodSignature)) {
-				LoggerProvider.LOGGER.error("Could not find method for name: " + methodName);
+				if (methodSignature == null) {
+					LoggerProvider.LOGGER.error("Could not find method for name: " + methodName);
+				} else {
+					LoggerProvider.LOGGER.error("Could not find method for name: " + methodName + " (Signature: " + methodSignature + ")");
+				}
 			}
 			return ctClass.toBytecode();
 		} catch (NotFoundException e) {
@@ -110,9 +114,11 @@ public abstract class BaseCodeIntegrator {
 				if (methodSignature != null && ctMethod.getSignature().equals(methodSignature)) {
 					ctClass.removeMethod(ctMethod);
 					ctClass.addMethod(enhanceMethodCode(ctMethod));
+					atLeastOneMethodFound = true;
 				} else if (methodSignature == null) {
 					ctClass.removeMethod(ctMethod);
 					ctClass.addMethod(enhanceMethodCode(ctMethod));
+					atLeastOneMethodFound = true;
 				}
 			}
 		}
