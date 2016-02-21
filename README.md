@@ -14,7 +14,7 @@ Moreover, _SherLog_ can be extended in an easy manner, offering interfaces for y
 ## How to build _SherLog_? ##
 Follow these steps to build and package _SherLog_:
 ```
-$ git clone https://github.com/Patrick-Kleindienst/BIG-SherLog.git
+$ git clone https://github.com/PaddySmalls/BIG-SherLog.git
 $ cd BIG-SherLog/
 $ mvn clean package
 ```
